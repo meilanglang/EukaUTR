@@ -1,0 +1,56 @@
+cat > .gitignore <<'EOF'
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.idea/
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+nohup.out
+
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+secrets.json
+
+# Model checkpoints
+checkpoints/
+checkpoint-*/
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Training and downstream data
+pretrain_data/
+downstream_data/
+
+# Generated outputs
+results/
+outputs/
+runs/
+wandb/
+tensorboard/
+
+# Cache
+.cache/
+cache/
+
+# System
+.DS_Store
+Thumbs.db
+EOF
