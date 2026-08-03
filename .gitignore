@@ -1,4 +1,3 @@
-cat > .gitignore <<'EOF'
 # Python
 __pycache__/
 *.py[cod]
@@ -53,4 +52,6 @@ cache/
 # System
 .DS_Store
 Thumbs.db
-EOF
+# Large dataset archives
+downstream_data*.tar.gz
+downstream_data*.tar.gz.sha256

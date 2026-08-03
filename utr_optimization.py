@@ -7,7 +7,7 @@ Two steering modes are supported:
 1. Provide both --positive_steering_csv and --negative_steering_csv to compute a
    task-specific steering vector from the current EukaUTR model activations.
 2. Provide only --reference_csv to optimize reference sequences with the packaged
-   default vector: steering_vector/EukaUTR_DISO.pt.
+   default vector: utr_optimazaition/guided_vector/EukaUTR_Guide.pt.
 
 Examples:
     python utr_optimization.py \
@@ -18,7 +18,7 @@ Examples:
         --reference_csv refs.csv \
         --positive_steering_csv positive.csv \
         --negative_steering_csv negative.csv \
-        --save_steering_vector_path steering_vector/custom_task.pt \
+        --save_steering_vector_path utr_optimazaition/guided_vector/custom_task.pt \
         --out_csv results/optimized_refs_custom.csv
 """
 
@@ -48,7 +48,7 @@ from utils.config.utr_transformer_config import (
 SCRIPT_DIR = Path(__file__).resolve().parent
 
 DEFAULT_CKPT_PATH = "checkpoints/S2/EukaUTR-S2.ckpt"
-DEFAULT_STEERING_VECTOR_PATH = "steering_vector/EukaUTR_DISO.pt"
+DEFAULT_STEERING_VECTOR_PATH = "utr_optimazaition/guided_vector/EukaUTR_Guide.pt"
 DEFAULT_OUTPUT_CSV = "results/eukautr_optimized_sequences.csv"
 
 
@@ -1807,7 +1807,7 @@ def build_argparser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
             "Optimize reference 3'UTR sequences with EukaUTR activation steering. "
-            "By default, the script loads steering_vector/EukaUTR_DISO.pt. "
+            "By default, the script loads utr_optimazaition/guided_vector/EukaUTR_Guide.pt. "
             "If both positive and negative steering CSVs are provided, it computes "
             "a new steering vector from those CSVs instead."
         )
@@ -1855,7 +1855,7 @@ def build_argparser() -> argparse.ArgumentParser:
         default=DEFAULT_STEERING_VECTOR_PATH,
         help=(
             "Precomputed steering-vector .pt path used when positive/negative steering CSVs "
-            "are not provided. Default: steering_vector/EukaUTR_DISO.pt."
+            "are not provided. Default: utr_optimazaition/guided_vector/EukaUTR_Guide.pt."
         ),
     )
     parser.add_argument(
